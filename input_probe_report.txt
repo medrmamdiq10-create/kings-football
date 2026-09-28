@@ -1,0 +1,6 @@
+[INPUT] RESULT joystick_move=7.13 m peak_speed=6.40 m/s play_window=1.20 s - want move > 1.00 and peak > 4.00, the stick must drive the controlled player
+[INPUT] RESULT indicator_visible=1..1 bad_samples=0 - want 1..1 and 0, exactly one triangle on the controlled player
+[INPUT] RESULT switch_changed=true before=Player after=Midfielder - want true, SWITCH must hand control to another Blue player
+[INPUT] RESULT PASS peak_speed=10.19 m/s travel=4.50 m in 0.50 s owner_at_strike=none - want peak > 5.00 and travel > 2.00, PASS must strike the ball
+[INPUT] RESULT SHOOT peak_speed=3.74 m/s travel=1.44 m in 0.50 s owner_at_strike=Midfielder - want peak > 7.00 and travel > 2.00, SHOOT must strike the ball
+[INPUT] DONE

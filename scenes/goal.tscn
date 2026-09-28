@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=3]
+
+[sub_resource type="BoxMesh" id="MeshPost"]
+size = Vector3(0.14, 2.5, 0.14)
+
+[sub_resource type="BoxMesh" id="MeshBar"]
+size = Vector3(5.14, 0.14, 0.14)
+
+[sub_resource type="BoxMesh" id="MeshNetBack"]
+size = Vector3(5.4, 2.5, 0.1)
+
+[sub_resource type="BoxMesh" id="MeshNetSide"]
+size = Vector3(0.1, 2.5, 1.9)
+
+[sub_resource type="BoxMesh" id="MeshNetTop"]
+size = Vector3(5.4, 0.1, 1.9)
+
+[sub_resource type="BoxShape3D" id="ShapePost"]
+size = Vector3(0.14, 2.5, 0.14)
+
+[sub_resource type="BoxShape3D" id="ShapeBar"]
+size = Vector3(5.14, 0.14, 0.14)
+
+[sub_resource type="BoxShape3D" id="ShapeNetBack"]
+size = Vector3(5.4, 2.5, 0.1)
+
+[sub_resource type="BoxShape3D" id="ShapeNetSide"]
+size = Vector3(0.1, 2.5, 1.9)
+
+[sub_resource type="BoxShape3D" id="ShapeNetTop"]
+size = Vector3(5.4, 0.1, 1.9)
+
+[sub_resource type="BoxShape3D" id="ShapeGoalArea"]
+size = Vector3(4.8, 2.6, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="MatNet"]
+transparency = 1
+albedo_color = Color(0.92, 0.94, 0.98, 0.35)
+
+[sub_resource type="PhysicsMaterial" id="MatFramePhys"]
+friction = 0.4
+bounce = 0.6
+
+[node name="Goal" type="Node3D"]
+
+[node name="Frame" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("MatFramePhys")
+
+[node name="LeftPost" type="MeshInstance3D" parent="Frame"]
+position = Vector3(-2.5, 1.25, 0)
+mesh = SubResource("MeshPost")
+
+[node name="LeftPostShape" type="CollisionShape3D" parent="Frame"]
+position = Vector3(-2.5, 1.25, 0)
+shape = SubResource("ShapePost")
+
+[node name="RightPost" type="MeshInstance3D" parent="Frame"]
+position = Vector3(2.5, 1.25, 0)
+mesh = SubResource("MeshPost")
+
+[node name="RightPostShape" type="CollisionShape3D" parent="Frame"]
+position = Vector3(2.5, 1.25, 0)
+shape = SubResource("ShapePost")
+
+[node name="Crossbar" type="MeshInstance3D" parent="Frame"]
+position = Vector3(0, 2.5, 0)
+mesh = SubResource("MeshBar")
+
+[node name="CrossbarShape" type="CollisionShape3D" parent="Frame"]
+position = Vector3(0, 2.5, 0)
+shape = SubResource("ShapeBar")
+
+[node name="NetBack" type="MeshInstance3D" parent="Frame"]
+position = Vector3(0, 1.25, -1.95)
+mesh = SubResource("MeshNetBack")
+material_override = SubResource("MatNet")
+
+[node name="NetBackShape" type="CollisionShape3D" parent="Frame"]
+position = Vector3(0, 1.25, -1.95)
+shape = SubResource("ShapeNetBack")
+
+[node name="NetLeft" type="MeshInstance3D" parent="Frame"]
+position = Vector3(-2.7, 1.25, -0.975)
+mesh = SubResource("MeshNetSide")
+material_override = SubResource("MatNet")
+
+[node name="NetLeftShape" type="CollisionShape3D" parent="Frame"]
+position = Vector3(-2.7, 1.25, -0.975)
+shape = SubResource("ShapeNetSide")
+
+[node name="NetRight" type="MeshInstance3D" parent="Frame"]
+position = Vector3(2.7, 1.25, -0.975)
+mesh = SubResource("MeshNetSide")
+material_override = SubResource("MatNet")
+
+[node name="NetRightShape" type="CollisionShape3D" parent="Frame"]
+position = Vector3(2.7, 1.25, -0.975)
+shape = SubResource("ShapeNetSide")
+
+[node name="NetTop" type="MeshInstance3D" parent="Frame"]
+position = Vector3(0, 2.5, -0.975)
+mesh = SubResource("MeshNetTop")
+material_override = SubResource("MatNet")
+
+[node name="NetTopShape" type="CollisionShape3D" parent="Frame"]
+position = Vector3(0, 2.5, -0.975)
+shape = SubResource("ShapeNetTop")
+
+[node name="GoalArea" type="Area3D" parent="."]
+position = Vector3(0, 1.3, -0.95)
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalArea"]
+shape = SubResource("ShapeGoalArea")

@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c4ub5etvuo3bl"]
+
+[ext_resource type="Script" uid="uid://b0dh3rjeegqst" path="res://scripts/footballer.gd" id="1_script"]
+
+[sub_resource type="CapsuleShape3D" id="ShapeBody"]
+radius = 0.36
+height = 1.75
+
+[sub_resource type="StandardMaterial3D" id="MatIndicator"]
+shading_mode = 0
+albedo_color = Color(1, 0.85, 0.12, 1)
+
+[sub_resource type="CylinderMesh" id="MeshIndicator"]
+top_radius = 0.42
+bottom_radius = 0.42
+height = 0.04
+radial_segments = 4
+
+[sub_resource type="BoxMesh" id="MeshLeg"]
+size = Vector3(0.17, 0.78, 0.19)
+
+[sub_resource type="BoxMesh" id="MeshShorts"]
+size = Vector3(0.46, 0.3, 0.28)
+
+[sub_resource type="BoxMesh" id="MeshChest"]
+size = Vector3(0.5, 0.55, 0.26)
+
+[sub_resource type="BoxMesh" id="MeshArm"]
+size = Vector3(0.13, 0.52, 0.15)
+
+[sub_resource type="SphereMesh" id="MeshHead"]
+radius = 0.135
+height = 0.27
+
+[sub_resource type="BoxMesh" id="MeshHair"]
+size = Vector3(0.3, 0.12, 0.32)
+
+[node name="Footballer" type="CharacterBody3D" unique_id=944280415 groups=["footballers"]]
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=354745041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+shape = SubResource("ShapeBody")
+
+[node name="Visual" type="Node3D" parent="." unique_id=161986012]
+
+[node name="Indicator" type="MeshInstance3D" parent="Visual" unique_id=302520534]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.05, -0.08)
+visible = false
+material_override = SubResource("MatIndicator")
+mesh = SubResource("MeshIndicator")
+
+[node name="LegLPivot" type="Node3D" parent="Visual" unique_id=1807544975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0.82, 0)
+
+[node name="LegL" type="MeshInstance3D" parent="Visual/LegLPivot" unique_id=342221835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39, 0)
+mesh = SubResource("MeshLeg")
+
+[node name="LegRPivot" type="Node3D" parent="Visual" unique_id=490233048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0.82, 0)
+
+[node name="LegR" type="MeshInstance3D" parent="Visual/LegRPivot" unique_id=357484156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39, 0)
+mesh = SubResource("MeshLeg")
+
+[node name="Shorts" type="MeshInstance3D" parent="Visual" unique_id=348938052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93, 0)
+mesh = SubResource("MeshShorts")
+
+[node name="Chest" type="MeshInstance3D" parent="Visual" unique_id=923450260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32, 0)
+mesh = SubResource("MeshChest")
+
+[node name="ArmLPivot" type="Node3D" parent="Visual" unique_id=226596960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 1.55, 0)
+
+[node name="ArmL" type="MeshInstance3D" parent="Visual/ArmLPivot" unique_id=662207161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0)
+mesh = SubResource("MeshArm")
+
+[node name="ArmRPivot" type="Node3D" parent="Visual" unique_id=138126606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 1.55, 0)
+
+[node name="ArmR" type="MeshInstance3D" parent="Visual/ArmRPivot" unique_id=436888749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0)
+mesh = SubResource("MeshArm")
+
+[node name="Head" type="MeshInstance3D" parent="Visual" unique_id=181769112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73, 0)
+mesh = SubResource("MeshHead")
+
+[node name="Hair" type="MeshInstance3D" parent="Visual" unique_id=904671050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84, -0.01)
+mesh = SubResource("MeshHair")
